@@ -1,0 +1,90 @@
+
+peje@peje-PC MINGW64 ~/desktop/praxis-academy/novice/01-02/kasus (master)
+$ java CreateXmlFile.java
+CreateXmlFile.java:19: error: ';' expected
+            DocumentBuilder dBuilder.newDocument();
+                                    ^
+1 error
+error: compilation failed
+
+peje@peje-PC MINGW64 ~/desktop/praxis-academy/novice/01-02/kasus (master)
+$ java CreateXmlFile.java
+CreateXmlFile.java:19: error: illegal start of expression
+            DocumentBuilder dBuilder =.dbFactory.newDocumentBuilder();
+                                      ^
+1 error
+error: compilation failed
+
+peje@peje-PC MINGW64 ~/desktop/praxis-academy/novice/01-02/kasus (master)
+$ java CreateXmlFile.java
+CreateXmlFile.java:32: error: cannot find symbol
+            attr.setvalue("ferrari");
+                ^
+  symbol:   method setvalue(String)
+  location: variable attr of type Attr
+1 error
+error: compilation failed
+
+peje@peje-PC MINGW64 ~/desktop/praxis-academy/novice/01-02/kasus (master)
+$ java CreateXmlFile.java
+CreateXmlFile.java:51: error: variable TransformerFactory might not have been initialized
+            TransformerFactory TransformerFactory =TransformerFactory.newInstance();
+                                                   ^
+1 error
+error: compilation failed
+
+peje@peje-PC MINGW64 ~/desktop/praxis-academy/novice/01-02/kasus (master)
+$ java CreateXmlFile.java
+
+peje@peje-PC MINGW64 ~/desktop/praxis-academy/novice/01-02/kasus (master)
+$ java CreateXmlFile.java
+
+peje@peje-PC MINGW64 ~/desktop/praxis-academy/novice/01-02/kasus (master)
+$ java CreateXmlFile.java
+CreateXmlFile.java:58: error: cannot find symbol
+            transform.transform(source,consoleResult);
+            ^
+  symbol:   variable transform
+  location: class CreateXmlFile
+1 error
+error: compilation failed
+
+peje@peje-PC MINGW64 ~/desktop/praxis-academy/novice/01-02/kasus (master)
+$ java CreateXmlFile.java
+javax.xml.transform.TransformerException: java.io.FileNotFoundException: c:\cars.xml (Access is denied)
+        at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.getOutputHandler(TransformerImpl.java:554)
+        at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:367)
+        at com.tutorialspoint.xml.CreateXmlFile.main(CreateXmlFile.java:54)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+        at jdk.compiler/com.sun.tools.javac.launcher.Main.execute(Main.java:415)
+        at jdk.compiler/com.sun.tools.javac.launcher.Main.run(Main.java:192)
+        at jdk.compiler/com.sun.tools.javac.launcher.Main.main(Main.java:132)
+Caused by: java.io.FileNotFoundException: c:\cars.xml (Access is denied)
+        at java.base/java.io.FileOutputStream.open0(Native Method)
+        at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+        at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+        at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+        at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.getOutputHandler(TransformerImpl.java:527)
+        ... 9 more
+---------
+java.io.FileNotFoundException: c:\cars.xml (Access is denied)
+        at java.base/java.io.FileOutputStream.open0(Native Method)
+        at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+        at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+        at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+        at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.getOutputHandler(TransformerImpl.java:527)
+        at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:367)
+        at com.tutorialspoint.xml.CreateXmlFile.main(CreateXmlFile.java:54)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+        at jdk.compiler/com.sun.tools.javac.launcher.Main.execute(Main.java:415)
+        at jdk.compiler/com.sun.tools.javac.launcher.Main.run(Main.java:192)
+        at jdk.compiler/com.sun.tools.javac.launcher.Main.main(Main.java:132)
+
+peje@peje-PC MINGW64 ~/desktop/praxis-academy/novice/01-02/kasus (master)
+$
