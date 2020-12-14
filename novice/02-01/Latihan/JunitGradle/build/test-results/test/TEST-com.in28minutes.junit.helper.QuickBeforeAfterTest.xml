@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.in28minutes.junit.helper.QuickBeforeAfterTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-12-14T08:06:42" hostname="pujiono" time="0.015">
+  <properties/>
+  <testcase name="test1" classname="com.in28minutes.junit.helper.QuickBeforeAfterTest" time="0.007"/>
+  <testcase name="test2" classname="com.in28minutes.junit.helper.QuickBeforeAfterTest" time="0.006"/>
+  <system-out><![CDATA[Before Class
+Before Test
+test1 executed
+After test
+Before Test
+test2 executed
+After test
+After Class
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

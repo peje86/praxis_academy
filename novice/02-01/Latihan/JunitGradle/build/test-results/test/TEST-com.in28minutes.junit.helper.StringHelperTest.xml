@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.in28minutes.junit.helper.StringHelperTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-12-14T08:06:42" hostname="pujiono" time="0.315">
+  <properties/>
+  <testcase name="testTruncateAInFirst2Positions_AinFirst2Positions" classname="com.in28minutes.junit.helper.StringHelperTest" time="0.001"/>
+  <testcase name="testAreFirstAndLastTwoCharactersTheSame_BasicNegativeScenario" classname="com.in28minutes.junit.helper.StringHelperTest" time="0.009"/>
+  <testcase name="testTruncateAInFirst2Positions_AinFirstPosition" classname="com.in28minutes.junit.helper.StringHelperTest" time="0.002"/>
+  <testcase name="testAreFirstAndLastTwoCharactersTheSame_BasicPositiveScenario" classname="com.in28minutes.junit.helper.StringHelperTest" time="0.009"/>
+  <testcase name="testTruncateAInFirst2Positions_AinFirst2Positions" classname="com.in28minutes.junit.helper.StringHelperTest" time="0.001"/>
+  <testcase name="testAreFirstAndLastTwoCharactersTheSame_BasicNegativeScenario" classname="com.in28minutes.junit.helper.StringHelperTest" time="0.0"/>
+  <testcase name="testTruncateAInFirst2Positions_AinFirstPosition" classname="com.in28minutes.junit.helper.StringHelperTest" time="0.004"/>
+  <testcase name="testAreFirstAndLastTwoCharactersTheSame_BasicPositiveScenario" classname="com.in28minutes.junit.helper.StringHelperTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

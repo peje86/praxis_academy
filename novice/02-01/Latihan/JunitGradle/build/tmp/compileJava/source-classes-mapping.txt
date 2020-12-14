@@ -1,0 +1,32 @@
+com/in28minutes/junit/model/AmountImpl.java
+ com.in28minutes.junit.model.AmountImpl
+com/in28minutes/junit/model/Collateral.java
+ com.in28minutes.junit.model.Collateral
+com/in28minutes/junit/business/ClientBO.java
+ com.in28minutes.junit.business.ClientBO
+com/in28minutes/junit/model/ProductType.java
+ com.in28minutes.junit.model.ProductType
+com/in28minutes/junit/model/Product.java
+ com.in28minutes.junit.model.Product
+com/in28minutes/junit/model/Currency.java
+ com.in28minutes.junit.model.Currency
+com/in28minutes/junit/model/ClientImpl.java
+ com.in28minutes.junit.model.ClientImpl
+com/in28minutes/junit/model/CollateralImpl.java
+ com.in28minutes.junit.model.CollateralImpl
+com/in28minutes/junit/model/Client.java
+ com.in28minutes.junit.model.Client
+com/in28minutes/junit/business/ClientBOImpl.java
+ com.in28minutes.junit.business.ClientBOImpl
+com/in28minutes/junit/model/ClientType.java
+ com.in28minutes.junit.model.ClientType
+com/in28minutes/junit/business/exception/DifferentCurrenciesException.java
+ com.in28minutes.junit.business.exception.DifferentCurrenciesException
+com/in28minutes/junit/model/Amount.java
+ com.in28minutes.junit.model.Amount
+com/in28minutes/junit/model/CollateralType.java
+ com.in28minutes.junit.model.CollateralType
+com/in28minutes/junit/model/ProductImpl.java
+ com.in28minutes.junit.model.ProductImpl
+com/in28minutes/junit/helper/StringHelper.java
+ com.in28minutes.junit.helper.StringHelper

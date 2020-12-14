@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.clarity.business.ClientBOTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-12-14T08:06:42" hostname="pujiono" time="0.007">
+  <properties/>
+  <testcase name="testClientProductSum1" classname="com.clarity.business.ClientBOTest" time="0.001"/>
+  <testcase name="testClientProductSum2" classname="com.clarity.business.ClientBOTest" time="0.0"/>
+  <testcase name="testClientProductSum" classname="com.clarity.business.ClientBOTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

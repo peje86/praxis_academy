@@ -1,0 +1,16 @@
+com/clarity/business/ClientBOTest.java
+ com.clarity.business.ClientBOTest
+com/in28minutes/junit/helper/ArraysCompareTest.java
+ com.in28minutes.junit.helper.ArraysCompareTest
+com/in28minutes/junit/helper/StringHelperTest.java
+ com.in28minutes.junit.helper.StringHelperTest
+com/clarity/business/ClientBOTestRefactored.java
+ com.clarity.business.ClientBOTestRefactored
+com/in28minutes/junit/helper/ArraysTest.java
+ com.in28minutes.junit.helper.ArraysTest
+com/in28minutes/junit/helper/QuickBeforeAfterTest.java
+ com.in28minutes.junit.helper.QuickBeforeAfterTest
+com/in28minutes/junit/helper/StringHelperParameterizedTest.java
+ com.in28minutes.junit.helper.StringHelperParameterizedTest
+com/in28minutes/junit/suite/DummyTestSuite.java
+ com.in28minutes.junit.suite.DummyTestSuite

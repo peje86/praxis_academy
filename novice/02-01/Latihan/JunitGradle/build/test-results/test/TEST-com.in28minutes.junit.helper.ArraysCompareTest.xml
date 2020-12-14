@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.in28minutes.junit.helper.ArraysCompareTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-12-14T08:06:42" hostname="pujiono" time="0.084">
+  <properties/>
+  <testcase name="testSort_Performance" classname="com.in28minutes.junit.helper.ArraysCompareTest" time="0.077"/>
+  <testcase name="testArraySort_NullArray" classname="com.in28minutes.junit.helper.ArraysCompareTest" time="0.0"/>
+  <testcase name="testArraySort_RandomArray" classname="com.in28minutes.junit.helper.ArraysCompareTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

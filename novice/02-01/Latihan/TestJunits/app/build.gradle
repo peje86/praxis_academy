@@ -26,8 +26,5 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'VendingMachine.VendingMachine'
-}
-run {                                 //untuk memberi jeda scanner
-    standardInput = System.in
+    mainClass = 'TestJunits.RuleExceptionTesterExample'
 }
