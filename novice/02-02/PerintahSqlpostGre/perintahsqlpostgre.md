@@ -5,7 +5,7 @@
     - ketik psql      lalu anda dibawa ke sql postgre
 
 3. perintah membuat database
-    -  createdb nama_database   //contoh : createdb toko_online  lalu tekan enter
+    -  CREATE DATABASE nama_database;   //contoh : CREATE DATABASE;toko_online  lalu tekan enter
 
 4. perintah masuk ke database 
     - psql nama_database   contoh: psql toko_online    lalu enter
