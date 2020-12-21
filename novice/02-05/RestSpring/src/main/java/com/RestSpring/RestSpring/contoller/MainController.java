@@ -1,7 +1,7 @@
 package com.RestSpring.RestSpring.controller;
 // sumber https://github.com/Muhammadakbaar/NewCRUD/tree/master/src/main/java/com/LLBCorp/controller
 import com.RestSpring.RestSpring.model.Admin;//mbuhhhhhhhhhhhhhhhhhhhhh
-import com.RestSpring.RestSpring.repository.UserRepository;
+import com.RestSpring.RestSpring.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.http.HttpStatus;
@@ -27,36 +27,32 @@ public class MainController {
     public @ResponseBody Iterable<Admin> getAllAdmin() {
         return adminRepository.findAll();
     }
-++++++++++++++++++++++++++++++++++++   sampe sini brooo+++++++++++++++++++++++++++
-
-
-
     @PostMapping
-    public @ResponseBody User addNewUser (@RequestBody User user){
-        return userRepository.save(user);
+    public @ResponseBody Admin addNewAdmin (@RequestBody Admin admin){
+        return adminRepository.save(admin);
     }
     
     @GetMapping("/{id}")
-    User userById(@PathVariable Integer id) {
-        return userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    Admin adminById(@PathVariable Integer id) {
+        return adminRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Integer id){
-        userRepository.deleteById(id);
+    public void deleteAdmin(@PathVariable Integer id){
+        adminRepository.deleteById(id);
     }
 
     @PutMapping("/{id}")
-    User updateUser(@RequestBody User newUser, @PathVariable Integer id){
-        return userRepository.findById(id)
-        .map(user ->{
-            user.setName(newUser.getName());
-            user.setEmail(newUser.getEmail());
-            return userRepository.save(newUser);
+    Admin updateAdmin(@RequestBody Admin newAdmin, @PathVariable Integer id){
+        return adminRepository.findById(id)
+        .map(admin ->{
+            admin.setName(newAdmin.getName());
+            admin.setEmail(newAdmin.getEmail());
+            return adminRepository.save(newAdmin);
         }).orElseGet(() -> {
-            newUser.setId(id);
-            return userRepository.save(newUser);
+            newAdmin.setId(id);
+            return adminRepository.save(newAdmin);
         });
     }
 }
