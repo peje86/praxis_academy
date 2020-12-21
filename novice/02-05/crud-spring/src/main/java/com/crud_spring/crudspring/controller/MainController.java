@@ -38,10 +38,40 @@ public  java.util.List<BioGuru> get_All() {  //bio guru diambil dari tabel nama 
  
 //2. post data ke tabel database
 
-@GetMapping(path="/get_nim/{nim}")//tipe bio mahasiswaa
+@GetMapping(path="/guruById/{nim}")//tipe bio mahasiswaa
 public Optional<BioGuru> nimBioGuru(@PathVariable String nim){
     return myResource.findById(nim);
 }
 
+//.3 menghapus isi data tabel byId
+
+@DeleteMapping(path="/delete/{nim}")//tidak menampilkan apapun
+void deleteBioGuru(@PathVariable String nim){
+    myResource.deleteById(nim);
+}
+
+//4. merubah data pake PUT 
+
+@PutMapping(path="/update/{nim}")//tipe biomahasisa
+public BioGuru replaceBioGuru(@RequestBody BioGuru newbioGuru, @PathVariable String nim){
+    return myResource.findById(nim)
+    .map(bioGuru->{
+        bioGuru.setNama(newbioGuru.getNama());
+        bioGuru.setNim(newbioGuru.getNim());
+        return myResource.save(bioGuru);
+    }).orElseGet(()->{
+        newbioGuru.setNim(nim);
+        return myResource.save(newbioGuru);
+    });
+    
+}
+
+
+//5. post data ke tabel guru
+
+@PostMapping(path="/post")
+public BioGuru addBioGuru(@RequestBody BioGuru bioGuru){
+    return myResource.save(bioGuru);
+}
 
 }
