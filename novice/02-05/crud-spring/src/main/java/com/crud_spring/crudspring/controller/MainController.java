@@ -36,7 +36,7 @@ public  java.util.List<BioGuru> get_All() {  //bio guru diambil dari tabel nama 
     return myResource.findAll();
 }
  
-//2. post data ke tabel database
+//2.tampil data by id ke tabel database
 
 @GetMapping(path="/guruById/{nim}")//tipe bio mahasiswaa
 public Optional<BioGuru> nimBioGuru(@PathVariable String nim){
