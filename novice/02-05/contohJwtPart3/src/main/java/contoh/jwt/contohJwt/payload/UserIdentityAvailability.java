@@ -1,7 +1,7 @@
 // response payload
 //  2. UserIdentityAvailability
 
-package com.example.polls.payload;
+package contoh.jwt.contohJwt.payload;
 
 public class UserIdentityAvailability {
     private Boolean available;

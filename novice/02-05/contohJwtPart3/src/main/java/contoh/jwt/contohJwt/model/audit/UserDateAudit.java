@@ -1,5 +1,6 @@
 package contoh.jwt.contohJwt.model.audit;
 
+// import contoh.jwt.contohJwt.model.audit.DateAudit;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;

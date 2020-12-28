@@ -1,7 +1,7 @@
 // response payload
 // 3.UserProfile
 
-package com.example.polls.payload;
+package contoh.jwt.contohJwt.payload;
 
 import java.time.Instant;
 
