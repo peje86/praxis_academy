@@ -1,0 +1,143 @@
+	model DateAudit.
+ 	Ini akan memiliki bidang createAt dan updatedAt. 
+ 	
+ 1.	buat folder audit  di  folder model 
+ 2. buat file DateAudit.java
+ 
+ 	kerangka file 
+ 	
+ 	//import class dan anotasi
+
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(
+        value = {"createdAt", "updatedAt"},
+        allowGetters = true
+) 
+
+
+public abstract class DateAudit  {
+
+
+    private Instant createdAt;
+    private Instant updatedAt;
+
+    //setter getter
+}
+
+//////////////////////////////
+
+3. tentukan aturan dan nilai atribut
+
+    //tentukan nilai dan aturan atribut
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private Instant createdAt; // atribut
+
+    @LastModifiedDate
+    @Column(nullable = false)
+    private Instant updatedAt; //atribut
+//////////////////////
+
+4. buat setter getter di DateAudit.java
+
+
+    //setter getter Createat
+    private Instant getCreatedAt(){
+        return createdAt;
+    }
+    private void setCreatedAt(Instant CreatedAt){
+        this.createdAt = createdAt;
+    }
+    //setter getter updateat
+    private Instant getUpdatedAt(){
+        return updatedAt;
+    }
+    private void setUpdatedAt(Instant updatedAt){
+        this.updatedAt =updatedAt;
+    }
+    
+5. 		tambahkan depedensy di pom.xml
+<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>
+6. tambahkan file import
+
+package oauth.loker.loker.model.audit;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
+import java.time.Instant;
+
+
+7.	ending file DateAudit.java
+
+package oauth.loker.loker.model.audit;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
+import java.time.Instant;
+
+
+
+//import class dan anotasi
+
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(
+        value = {"createdAt", "updatedAt"},
+        allowGetters = true
+) 
+
+
+public abstract class DateAudit implements Serializable {
+ 
+    //tentukan nilai dan aturan atribut
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private Instant createdAt; // atribut
+
+    @LastModifiedDate
+    @Column(nullable = false)
+    private Instant updatedAt; //atribut
+
+    //setter getter Createat
+    private Instant getCreatedAt(){
+        return createdAt;
+    }
+    private void setCreatedAt(Instant createdAt){
+        this.createdAt = createdAt;
+    }
+    //setter getter updateat
+    private Instant getUpdatedAt(){
+        return updatedAt;
+    }
+    private void setUpdatedAt(Instant updatedAt){
+        this.updatedAt =updatedAt;
+    }
+}
+
+//////////////////////
+coba running harusnya jalan..........
+ server is running on port 35729
+2020-12-29 15:03:36.641  WARN 15276 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-29 15:03:36.876  INFO 15276 --- [  restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-29 15:03:37.993  INFO 15276 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-12-29 15:03:38.017  INFO 15276 --- [  restartedMain] oauth.loker.loker.LokerApplication       : Started LokerApplication in 9.798 seconds (JVM running for 10.933)
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>next gabung file user dengan dateaudit kmdian membuat configurasinya.

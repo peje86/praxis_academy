@@ -1,0 +1,314 @@
+1. buat file User.java di folder model
+
+	a.	kerangka pembuatan Many to many user
+
+//////////////////////////////////////////////////
+
+// membuat tabel
+@Entity
+@Table  (
+    // nama tabel users, dengan username unique dan email unique contraint
+    name = "users", 
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames ="username"),
+        @UniqueConstraint(columnNames = "email")
+                        }
+        )
+/////////////////////////
+
+
+
+public class User  {
+
+    // atribut dari user (id,name,username,email,password)
+
+    private Long id;
+    private String name;
+    private String username;
+    private String email;
+    private String password;
+
+// many to Many user dengan role 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "user_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public User() {
+        // dikosongkan
+
+    }
+
+    public User(String name, String username, String email, String password) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+
+    // setter getter
+
+
+}
+
+///////////////////////////////////////////////////////
+	
+	b.isi kerangka sebelum import packages
+	
+	
+
+// membuat tabel
+@Entity
+@Table  (
+    // nama tabel users, dengan username unique dan email unique contraint
+    name = "users", 
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames ="username"),
+        @UniqueConstraint(columnNames = "email")
+                        }
+        )
+/////////////////////////
+
+
+
+public class User  {
+
+    // atribut dari user (id,name,username,email,password)
+  //1. atribut id
+  @Id 
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    //menuju ke setter getter u/ ngeset setter getter
+    //2. atribut nama nama tidak boleh kosong , max nama 40 karakter
+    @NotBlank
+    @Size(max = 40)
+    private String name;
+    //menuju ke setter getter u/ ngeset setter getter
+
+    //3. atribut username notblank, size 15 karakter
+    @NotBlank
+    @Size(max = 15)
+    private String username;
+    //menuju ke setter getter u/ ngeset setter getter
+
+  //4. atribut email 
+    @NaturalId
+    @NotBlank
+    @Size(max = 40)
+    @Email
+    private String email;
+      //menuju ke setter getter u/ ngeset setter getter
+
+    // atribut password
+    @NotBlank
+    @Size(max = 100)
+    private String password;
+  //menuju ke setter getter u/ ngeset setter getter
+// many to Many user dengan role 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "user_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+// setter getter role
+public Set<Role> getRoles() {
+    return roles;
+}
+
+public void setRoles(Set<Role> roles) {
+    this.roles = roles;
+}
+
+//////////////////////////////////
+
+    public User() {
+        // dikosongkan
+
+    }
+
+    public User(String name, String username, String email, String password) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+   // setter getter
+
+    //setter getter id
+private Long getId(){
+    return id;
+}
+private void setId(Long id){
+    this.id = id;
+}
+// setter getter nama
+private String getName(){
+    return name;
+}
+private void setName(String name){
+    this.name = name;
+}
+
+//setter getter username
+private String getUsername(){
+    return username;
+}
+private void setUsername(String username){
+    this.username = username;
+}
+
+//setter getter email
+private String getEmail(){
+    return email;
+}
+private void setEmail(String email){
+    this.email = email;
+}
+
+//settergetter password
+private String getPassword(){
+    return password;
+}
+private void setPassword(String password){
+    this.password = password;
+}
+
+}
+
+
+
+//////////////////////////////////////////////////////////
+
+	c. import package java pada file user.java
+	
+	import org.hibernate.annotations.NaturalId;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
+
+	
+2. sebelum itu buat dulu 
+	file userRepository.java
+	
+	package oauth.loker.loker.repository;
+
+import oauth.loker.loker.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    // Optional<User>findByName(RoleName roleName);
+
+    Optional<User> findByEmail(String email);  //berdasarkan email
+
+    Optional<User>findByUsernameOrEmail(String username, String email);
+
+    List<User> findByIdIn(List<Long> userIds);
+
+    Optional<User> findByUsername(String username);
+
+    Boolean existsByUsername(String username);
+
+    Boolean existsByEmail(String email);
+
+}
+ 	e. coba running mvn
+ 	
+ 	on project loker: Compilation failure: Compilation failure: 
+[ERROR] /home/pujiono/Documents/praxis_academy/novice/02-05/loker/src/main/java/oauth/loker/loker/repository/UserRepository.java:[10,8] interface RoleRepository is public, should be declared in a file named RoleRepository.java
+[ERROR] /home/pujiono/Documents/praxis_academy/novice/02-05/loker/src/main/java/oauth/loker/loker/model/User.java:[6,36] package javax.validation.constraints does not exist
+[ERROR] /home/pujiono/Documents/praxis_academy/novice/02-05/loker/src/main/java/oauth/loker/loker/model/User.java:[7,36] package javax.validation.constraints does not exist
+[ERROR] /home/pujiono/Documents/praxis_academy/novice/02-05/loker/src/main/java/oauth/loker/loker/model/User.java:[8,36] package javax.validation.constraints does not exist
+[ERROR] /home/pujiono/Documents/praxis_academy/novice/02-05/loker/src/main/java/oauth/loker/loker/model/User.java:[34,4] cannot find symbol
+ 	
+ 	error!!!!!!!!!!!! kan
+ 	coba deh tambahkan depedency
+ 	   <dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+
+3. running mvn
+
+
+loker_2=# \d
+             List of relations
+ Schema |     Name     |   Type   | Owner  
+--------+--------------+----------+--------
+ public | roles        | table    | peje86
+ public | roles_id_seq | sequence | peje86
+ public | user_roles   | table    | peje86
+ public | users        | table    | peje86
+ public | users_id_seq | sequence | peje86
+(5 rows)
+
+loker_2=# ^C
+loker_2=# 
+
+
++++++++++++GOOD JOB TABEL USER SUDAH DITAMBAHKAN ++++++
+   CEK RELASI
+   
+	A. coba cek relasi di tabel user
+
+loker_2=# \d users
+                                     Table "public.users"
+  Column  |          Type          | Collation | Nullable |              Default              
+----------+------------------------+-----------+----------+-----------------------------------
+ id       | bigint                 |           | not null | nextval('users_id_seq'::regclass)
+ email    | character varying(255) |           |          | 
+ name     | character varying(255) |           |          | 
+ password | character varying(255) |           |          | 
+ username | character varying(255) |           |          | 
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (id)
+    "uk6dotkott2kjsp8vw4d0m25fb7" UNIQUE CONSTRAINT, btree (email)
+    "ukr43af9ap4edm43mmtq01oddj6" UNIQUE CONSTRAINT, btree (username)
+Referenced by:
+    TABLE "user_roles" CONSTRAINT "fkhfh9dx7w3ubf1co1vdev94g3f" FOREIGN KEY (user_id) REFERENCES users(id)
+
+loker_2=# 
+
+	B. RELASI roles
+	
+	loker_2=# \d roles
+                                   Table "public.roles"
+ Column |         Type          | Collation | Nullable |              Default              
+--------+-----------------------+-----------+----------+-----------------------------------
+ id     | bigint                |           | not null | nextval('roles_id_seq'::regclass)
+ name   | character varying(60) |           |          | 
+Indexes:
+    "roles_pkey" PRIMARY KEY, btree (id)
+    "uk_nb4h0p6txrmfc0xbrd1kglp9t" UNIQUE CONSTRAINT, btree (name)
+Referenced by:
+    TABLE "user_roles" CONSTRAINT "fkh8ciramu9cc9q3qcqiv4ue8a6" FOREIGN KEY (role_id) REFERENCES roles(id)
+
+
+	C. relasi di user_roles
+	
+	loker_2=# \d user_roles
+             Table "public.user_roles"
+ Column  |  Type  | Collation | Nullable | Default 
+---------+--------+-----------+----------+---------
+ user_id | bigint |           | not null | 
+ role_id | bigint |           | not null | 
+Indexes:
+    "user_roles_pkey" PRIMARY KEY, btree (user_id, role_id)
+Foreign-key constraints:
+    "fkh8ciramu9cc9q3qcqiv4ue8a6" FOREIGN KEY (role_id) REFERENCES roles(id)
+    "fkhfh9dx7w3ubf1co1vdev94g3f" FOREIGN KEY (user_id) REFERENCES users(id)
+
+/////////////////////////////finish nanti lanjut bikin audit //////////
+	
+

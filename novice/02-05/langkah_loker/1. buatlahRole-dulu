@@ -1,0 +1,237 @@
+1. buat folder model, 
+
+	a.  lalu buat file RoleName.java
+
+package oauth.loker.loker.model;
+
+public enum  RoleName {
+    ROLE_USER,
+    ROLE_ADMIN
+}
+
+
+	b. buat file Role.java
+	
+package oauth.loker.loker.model;
+
+import org.hibernate.annotations.NaturalId;
+import javax.persistence.*;  // * memanggil semua class dan anotasi dari JPA
+
+//keterangan :
+// javax persistense adalah class dan anotasi dari JPA yg berada dlm 1 paket
+
+
+@Entity
+@Table(name="roles")
+public class Role {
+
+    // memanggil class dan anotasi java 
+    @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // ATRIBUT ID
+    private Long id;
+ 
+
+
+// setter getter id
+    public Long getId(){
+        return id;
+    }
+    public void setId(Long id){
+        this.id= id;
+    }
+// end setter getter
+
+
+//memanggil anotasi dan class   
+//  @Enumerated(EnumType.STRING) nilai enum kita tentukan sendiri
+// contoh enum 
+
+// package membuat string bernilai kosong, isi diambil dr kelas lain
+// @Enumerated(EnumType.STRING)
+// @NaturalId
+// @Column(length = 60)
+
+@Enumerated(EnumType.STRING)
+@NaturalId
+@Column(length = 60)
+// attribut role
+private RoleName name;
+
+public Role() {
+
+}
+
+public Role(RoleName name) {
+    this.name = name;
+}
+
+// setter getter roleName
+public RoleName getName() {
+            return name;
+        }
+    
+public void setName(RoleName name) {
+            this.name = name;
+        }
+
+
+}
+
+
+2. setting aplication.properties
+
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+
+spring.jpa.hibernate.show-sql=true
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/loker_2?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+
+spring.datasource.username=peje86
+
+spring.datasource.password=peje1234
+
+spring.datasource.initialization-mode=always
+
+spring.datasource.initialize=true
+
+spring.datasource.continue-on-error=true
+
+spring.jackson.serialization.WRITE_DATES_AS_TIMESTAMPS= false
+spring.jackson.time-zone= UTC
+
+app.jwtSecret= JWTSuperSecretKey
+app.jwtExpirationInMs = 604800000
+
+server.port = 8081
+
+
+3. tambahkan depedensi pada pom.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>oauth.loker</groupId>
+	<artifactId>loker</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>loker</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>11</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- For Working with Json Web Tokens (JWT) -->
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt</artifactId>
+    <version>0.9.0</version>
+</dependency>
+
+<!-- For Java 8 Date/Time Support -->
+<dependency>
+    <groupId>com.fasterxml.jackson.datatype</groupId>
+    <artifactId>jackson-datatype-jsr310</artifactId>
+</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+
+4. running mvn
+5. isi database pada tabel roles
+
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+
+tampilan terminal>>>>>>>>>>>>>>>>>>
+
+postgres@pujiono:/home/pujiono$ psql loker_2
+psql (11.9 (Debian 11.9-0+deb10u1))
+Type "help" for help.
+
+loker_2=# \d
+             List of relations
+ Schema |     Name     |   Type   | Owner  
+--------+--------------+----------+--------
+ public | roles        | table    | peje86
+ public | roles_id_seq | sequence | peje86
+(2 rows)
+
+loker_2=# select*from roles;
+ id | name 
+----+------
+(0 rows)
+
+loker_2=# 
+loker_2=# INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT 0 1
+loker_2=# INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+INSERT 0 1
+loker_2=# select*from roles;
+ id |    name    
+----+------------
+  1 | ROLE_USER
+  2 | ROLE_ADMIN
+(2 rows)
+
+loker_2=# 
+
+
+6. membuat folder Repository
+
+buat file RoleRepository.java
+
+import oauth.loker.loker.model.Role;
+import oauth.loker.loker.model.RoleName;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.Optional;
+
+@Repository
+public interface RoleRepository extends JpaRepository<Role,Long>{
+    Optinal<Role>findByName(RoleName rolename);
+
+}
+
+
+
