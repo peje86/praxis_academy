@@ -19,3 +19,19 @@ public class AppException extends RuntimeException {
 }
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2. buat folder security
+ buat file
+ 
+ a. jwttokenprovider
+ b. costomUserDetailService
+ c.JwtAuthenticationEntryPoin
+ 
+ 3. buat folder controller
+  buat file
+  a. AuthController
+  
+ 4.folder payload
+  file
+  a. ApiResponse
+  b. JwtAufhentionResponse
+  c. SignUpRequest

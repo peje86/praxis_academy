@@ -1,8 +1,8 @@
 package oauth.loker.loker.config;
 
-import com.example.polls.security.CustomUserDetailsService;
-import com.example.polls.security.JwtAuthenticationEntryPoint;
-import com.example.polls.security.JwtAuthenticationFilter;
+import oauth.loker.loker.security.CustomUserDetailsService;
+import oauth.loker.loker.security.JwtAuthenticationEntryPoint;
+import oauth.loker.loker.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
