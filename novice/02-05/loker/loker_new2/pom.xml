@@ -8,17 +8,15 @@
 		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>oauth.loker</groupId>
-	<artifactId>loker</artifactId>
+	<groupId>contoh.jwt</groupId>
+	<artifactId>contohJwt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>loker</name>
+	<name>contohJwt</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-
-	<dependencies>
 <dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -78,9 +76,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
