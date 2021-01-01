@@ -15,18 +15,18 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idrole;
 	
-	private String name;
+	private String namerole;
 	public Long getIdrole() {
 		return idrole;
 	}
 	public void setIdrole(Long idrole) {
 		this.idrole = idrole;
 	}
-	public String getName() {
-		return name;
+	public String getNameRole() {
+		return namerole;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNameRole(String namerole) {
+		this.namerole = namerole;
 	}
 	
 	

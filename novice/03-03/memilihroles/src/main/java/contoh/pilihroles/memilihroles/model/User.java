@@ -18,13 +18,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="users")
 
-public class Users{
+public class User{
 
     //many to many cassade dan join tabel
     
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(
-			name = "users_rolescoba",
+			name = "users_roles",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id")
 			)
@@ -55,13 +55,13 @@ public class Users{
     }
 
 
-    private String nama;
+    private String name;
 
-    public String getNama(){
-        return nama;
+    public String getName(){
+        return name;
     }
-    public void setNama(String nama){
-        this.nama=nama;
+    public void setName(String name){
+        this.nama=name;
     }
 
     private String email;
