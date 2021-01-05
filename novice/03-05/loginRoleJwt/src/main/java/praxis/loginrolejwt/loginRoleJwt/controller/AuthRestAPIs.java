@@ -29,7 +29,8 @@ import praxis.loginrolejwt.loginRoleJwt.model.User;
 import praxis.loginrolejwt.loginRoleJwt.repository.RoleRepository;
 import praxis.loginrolejwt.loginRoleJwt.repository.UserRepository;
 import praxis.loginrolejwt.loginRoleJwt.security.jwt.JwtProvider;
- 
+
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -111,4 +112,7 @@ public class AuthRestAPIs {
  
         return ResponseEntity.ok().body("User registered successfully!");
     }
+
+
+
 }
