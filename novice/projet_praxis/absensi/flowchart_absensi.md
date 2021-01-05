@@ -1,3 +1,12 @@
+alur bisnis
+1. admin mendaftarkan pegawai
+2. user login
+3. user absen datang
+4. user absen pulang
+5
+
+
+
 tabel :
 
 a. roles
@@ -8,6 +17,8 @@ a. roles
 b.rolename
 c.users
    - id user
+   - id pegawai
+   - jabatan
    - nama user
    - email
    - password
