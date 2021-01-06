@@ -18,6 +18,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
  
 import org.hibernate.annotations.NaturalId;
+
+import project.absensi.absensi.model.waktu.Waktu;
  
 @Entity
 @Table(name = "users", uniqueConstraints = {
@@ -28,7 +30,7 @@ import org.hibernate.annotations.NaturalId;
             "email"
         })
 })
-public class User{
+public class User  {
   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -70,19 +72,22 @@ public class User{
  
  // many to many
  
-    // @ManyToMany(fetch = FetchType.LAZY)
-    // @JoinTable(name = "user_roles", 
-    //   joinColumns = @JoinColumn(name = "user_id"), 
-    //   inverseJoinColumns = @JoinColumn(name = "role_id"))
-    // private Set<Role> roles = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles", 
+      joinColumns = @JoinColumn(name = "user_id"), 
+      inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
  
     public User() {}
  
-    public User(String name, String username, String email, String password) {
+    public User(String name, String username, String email, String password, String jabatan,String telepon, String alamat) {
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.telepon =telepon;
+        this.alamat =alamat;
+        this.jabatan=jabatan;
     }
  
     public Long getId() {
@@ -159,11 +164,11 @@ public class User{
  
  // file untuk setter getter many to many
  
-    // public Set<Role> getRoles() {
-    //     return roles;
-    // }
+    public Set<Role> getRoles() {
+        return roles;
+    }
  
-    // public void setRoles(Set<Role> roles) {
-    //     this.roles = roles;
-    // }
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }
