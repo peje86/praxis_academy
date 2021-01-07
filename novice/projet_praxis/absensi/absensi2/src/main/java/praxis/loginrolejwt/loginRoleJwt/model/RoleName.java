@@ -1,4 +1,4 @@
-package project.absensi.absensi.model;
+package praxis.loginrolejwt.loginRoleJwt.model;
 
 public enum  RoleName {
     ROLE_USER,

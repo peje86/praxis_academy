@@ -1,4 +1,4 @@
-package project.absensi.absensi.model;
+package praxis.loginrolejwt.loginRoleJwt.model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -85,9 +85,9 @@ public class User  {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.telepon =telepon;
-        this.alamat =alamat;
-        this.jabatan=jabatan;
+        // this.telepon =telepon;
+        // this.alamat =alamat;
+        // this.jabatan=jabatan;
     }
  
     public Long getId() {

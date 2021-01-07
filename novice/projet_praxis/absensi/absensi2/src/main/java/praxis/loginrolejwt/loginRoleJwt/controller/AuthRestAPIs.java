@@ -1,4 +1,4 @@
-package project.absensi.absensi.controller;
+package praxis.loginrolejwt.loginRoleJwt.controller;
 
 
 import java.util.HashSet;
@@ -14,43 +14,27 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.web.bind.annotation.CrossOrigin;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.RestController;
-
-/////////////////////
-
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.net.URI;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Optional;
-
-/////////////////
-
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
  
-import project.absensi.absensi.messages.request.LoginForm;
-import project.absensi.absensi.messages.request.SignUpForm;
-import project.absensi.absensi.messages.response.JwtResponse;
-import project.absensi.absensi.model.Role;
-import project.absensi.absensi.model.RoleName;
-import project.absensi.absensi.model.User;
-import project.absensi.absensi.repository.RoleRepository;
-import project.absensi.absensi.repository.UserRepository;
-import project.absensi.absensi.security.jwt.JwtTokenProvider;
+import praxis.loginrolejwt.loginRoleJwt.messages.request.LoginForm;
+import praxis.loginrolejwt.loginRoleJwt.messages.request.SignUpForm;
+import praxis.loginrolejwt.loginRoleJwt.messages.response.JwtResponse;
+import praxis.loginrolejwt.loginRoleJwt.model.Role;
+import praxis.loginrolejwt.loginRoleJwt.model.RoleName;
+import praxis.loginrolejwt.loginRoleJwt.model.User;
+import praxis.loginrolejwt.loginRoleJwt.repository.RoleRepository;
+import praxis.loginrolejwt.loginRoleJwt.repository.UserRepository;
+import praxis.loginrolejwt.loginRoleJwt.security.jwt.JwtProvider;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
-public class AuthController {
+public class AuthRestAPIs {
  
     @Autowired
     AuthenticationManager authenticationManager;
@@ -67,9 +51,6 @@ public class AuthController {
     @Autowired
     JwtProvider jwtProvider;
  
-    // @Autowired
-    // JwtTokenProvider tokenProvider;
-
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
  
@@ -82,7 +63,7 @@ public class AuthController {
  
         SecurityContextHolder.getContext().setAuthentication(authentication);
  
-        String jwt = jwtTokenProvider.generateJwtToken(authentication);
+        String jwt = jwtProvider.generateJwtToken(authentication);
         return ResponseEntity.ok(new JwtResponse(jwt));
     }
  
@@ -114,9 +95,9 @@ public class AuthController {
             
             break;
           case "pegawai":
-                Role pmRole = roleRepository.findByName(RoleName.ROLE_PEGAWAI)
+                Role pegawaiRole = roleRepository.findByName(RoleName.ROLE_PEGAWAI)
                   .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-                roles.add(pmRole);
+                roles.add(pegawaiRole);
                 
             break;
           default:
@@ -131,8 +112,6 @@ public class AuthController {
  
         return ResponseEntity.ok().body("User registered successfully!");
     }
-
-
 
 
 
