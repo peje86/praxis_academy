@@ -63,51 +63,51 @@ public class StockProducts {
 
 
 
-    // many to one ke product
+//     // many to one ke product
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "id_product", referencedColumnName="id", insertable = false, updatable = false)
-    private Products products;
+//     @ManyToOne(optional=false)
+//     @JoinColumn(name = "id_product", referencedColumnName="id", insertable = false, updatable = false)
+//     private Products products;
 
-public Products getProducts() {
-    return products;
-  }
+// public Products getProducts() {
+//     return products;
+//   }
 
-    //setter
-//id kategorie
-@NotBlank
-private String id_product;
+//     //setter
+// //id kategorie
+// @NotBlank
+// private String id_product;
 
-public String getIdProduct() {
-    return id_product;
-  }
+// public String getIdProduct() {
+//     return id_product;
+//   }
   
-  public void setIdProduct(String id_product) {
-    this.id_product = id_product;
-  }
+//   public void setIdProduct(String id_product) {
+//     this.id_product = id_product;
+//   }
   
-    // many to one ke user
+//     // many to one ke user
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "inputBy", referencedColumnName="id", insertable = false, updatable = false)
-    private User user;
+//     @ManyToOne(optional=false)
+//     @JoinColumn(name = "inputBy", referencedColumnName="id", insertable = false, updatable = false)
+//     private User user;
 
-public User getUser() {
-    return user;
-  }
+// public User getUser() {
+//     return user;
+//   }
 
-    //setter
-//id user
-@NotBlank
-private String id_user;
+//     //setter
+// //id user
+// @NotBlank
+// private String id_user;
 
-public String getIdUser() {
-    return id_user;
-  }
+// public String getIdUser() {
+//     return id_user;
+//   }
   
-  public void setIdUser(String id_user) {
-    this.id_user = id_user;
-  }
+//   public void setIdUser(String id_user) {
+//     this.id_user = id_user;
+//   }
 
 
 

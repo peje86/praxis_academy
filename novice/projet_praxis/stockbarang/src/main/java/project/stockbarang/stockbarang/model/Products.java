@@ -40,22 +40,25 @@ public class Products  {
 
     @ManyToOne(optional=false)
     @JoinColumn(name = "id_kategori", referencedColumnName="id", insertable = false, updatable = false)
-    private Kategories kategories;
+    private Kategories kategories; // object kategorie, mengambil object lain
 
 public Kategories getKategories() {
     return kategories;
   }
+public void setKategories(Kategories kategories) {
+    this.kategories = kategories;
+}
 
     //setter
 //id kategorie
 @NotBlank
-private String id_kategori;
+private Integer id_kategori;
 
-public String getIdKategori() {
+public Integer getIdKategori() {
     return id_kategori;
   }
   
-  public void setIdKategori(String id_kategori) {
+  public void setIdKategori(Integer id_kategori) {
     this.id_kategori = id_kategori;
   }
 
