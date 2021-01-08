@@ -88,7 +88,7 @@ public class Absensi  {
         this.lembur = lembur;
     }
 //tanggal
-
+    @ NotBlank
     private String tanggal;
 
     public String getTanggal(){
@@ -96,6 +96,17 @@ public class Absensi  {
     }
     public void setTanggal(String tanggal){
         this.tanggal = tanggal;
+    }
+
+    //bulan
+    @NotBlank
+    private String bulan;
+
+    public String getBulan(){
+        return bulan;
+    }
+    public void setBulan(String bulan){
+        this.bulan = bulan;
     }
 
     @ManyToMany(fetch = FetchType.LAZY)
