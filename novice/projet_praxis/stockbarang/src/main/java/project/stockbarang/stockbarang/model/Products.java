@@ -1,4 +1,5 @@
 package project.stockbarang.stockbarang.model;
+
 import java.util.HashSet;
 import java.util.Set;
  
@@ -36,6 +37,34 @@ public class Products  {
         this.id = id;
     }
 
+    // many to one ke satuan
+
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "id_satuan", referencedColumnName="id", insertable = false, updatable = false)
+    private Satuans satuan; // object kategorie, mengambil object lain
+
+public Satuans getSatuan() {
+    return satuan;
+  }
+public void setSatuan(Satuans satuan) {
+    this.satuan = satuan;
+}
+
+    //setter
+//id satuan
+@NotBlank
+private Integer id_satuan;
+
+public Integer getIdSatuan() {
+    return id_satuan;
+  }
+  
+  public void setIdSatuan(Integer id_satuan) {
+    this.id_satuan = id_satuan;
+  }
+
+
+
     // many to one ke kategory
 
     @ManyToOne(optional=false)
@@ -63,6 +92,8 @@ public Integer getIdKategori() {
   }
 
 
+
+
       // nama product
 
       @NotBlank
@@ -81,40 +112,18 @@ public Integer getIdKategori() {
       // berat
 
     @NotBlank
-    private String berat;
+    private String netto;
   
-    public String getBerat(){
-        return berat;
+    public String getNetto(){
+        return netto;
     }
-    public void setBerat(String berat){
-        this.berat = berat;
+    public void setNetto(String netto){
+        this.netto = netto;
     }
 
-      // stock
-
-      @NotBlank
-      private String stock;
-   
-      public String getStock(){
-          return berat;
-      }
-      public void setStock(String stock){
-          this.stock = stock;
-      }
 
 
-      // jumlah
 
-      @NotBlank
-      private String jumlah;
-  
-      public String getJumlah(){
-          return berat;
-      }
-      public void setJumlah(String jumlah){
-          this.jumlah = jumlah;
-      }
- 
 
     // @ManyToMany(fetch = FetchType.LAZY)
     // @JoinTable(name = "record_absen", 
