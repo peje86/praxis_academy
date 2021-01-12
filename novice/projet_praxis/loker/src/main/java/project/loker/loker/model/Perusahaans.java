@@ -1,0 +1,113 @@
+package project.loker.loker.model;
+
+import java.util.HashSet;
+import java.util.Set;
+ 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+ 
+import org.hibernate.annotations.NaturalId;
+
+// import project.absensi.absensi.model.waktu.Waktu;
+ 
+
+@Entity
+@Table(name="perusahaan")
+public class Perusahaans  {
+    
+    // id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    public Long getId(){
+        return id;
+    }
+    public void setId(Long id){
+        this.id = id;
+    }
+
+    // many to one ke cities
+
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "id_kota", referencedColumnName="id", insertable = false, updatable = false)
+    private Cities cities; // object kategorie, mengambil object lain
+
+public Cities getCities() {
+    return cities;
+  }
+public void setCities(Cities cities) {
+    this.cities = cities;
+}
+
+    //setter
+//id satuan
+@NotBlank
+private Integer id_city;
+
+public Integer getIdCity() {
+    return id_city;
+  }
+  
+  public void setIdCity(Integer id_city) {
+    this.id_city = id_city;
+  }
+
+
+
+    // many to one ke kategory
+
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "id_kategori", referencedColumnName="id", insertable = false, updatable = false)
+    private Kategories kategories; // object kategorie, mengambil object lain
+
+public Kategories getKategories() {
+    return kategories;
+  }
+public void setKategories(Kategories kategories) {
+    this.kategories = kategories;
+}
+
+    //setter
+//id kategorie
+@NotBlank
+private Integer id_kategori;
+
+public Integer getIdKategori() {
+    return id_kategori;
+  }
+  
+  public void setIdKategori(Integer id_kategori) {
+    this.id_kategori = id_kategori;
+  }
+
+
+
+
+      // nama product
+
+      @NotBlank
+      @Size(min=3, max = 50)
+      private String nama_perusahaan;
+   
+      public String getNamaPerusahaan(){
+          return nama_perusahaan;
+      }
+      public void setNamaPerusahaan(String nama_perusahaan){
+          this.nama_perusahaan = nama_perusahaan;
+      }
+
+   
+
+
+}

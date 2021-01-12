@@ -1,4 +1,4 @@
-package project.stockbarang.stockbarang.controller;
+package project.loker.loker.controller;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,20 +28,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
  
-import project.stockbarang.stockbarang.messages.request.LoginForm;
-import project.stockbarang.stockbarang.messages.request.SignUpForm;
-import project.stockbarang.stockbarang.messages.response.JwtResponse;
-import project.stockbarang.stockbarang.model.Role;
-import project.stockbarang.stockbarang.model.RoleName;
-import project.stockbarang.stockbarang.model.User;
-import project.stockbarang.stockbarang.model.Products;
-import project.stockbarang.stockbarang.model.Kategories;
-import project.stockbarang.stockbarang.model.Stoks;
-import project.stockbarang.stockbarang.repository.RoleRepository;
-import project.stockbarang.stockbarang.repository.UserRepository;
-import project.stockbarang.stockbarang.repository.ProductRepository;
-import project.stockbarang.stockbarang.repository.StokRepository;
-import project.stockbarang.stockbarang.security.jwt.JwtProvider;
+import project.loker.loker.messages.request.LoginForm;
+import project.loker.loker.messages.request.SignUpForm;
+import project.loker.loker.messages.response.JwtResponse;
+import project.loker.loker.model.Role;
+import project.loker.loker.model.RoleName;
+import project.loker.loker.model.User;
+import project.loker.loker.repository.RoleRepository;
+import project.loker.loker.repository.UserRepository;
+import project.loker.loker.security.jwt.JwtProvider;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -58,11 +53,11 @@ public class AuthRestAPIs {
     @Autowired
     RoleRepository roleRepository;
 
-    @Autowired
-    ProductRepository productRepository;
+    // @Autowired
+    // ProductRepository productRepository;
 
-    @Autowired
-    StokRepository stokRepository;
+    // @Autowired
+    // StokRepository stokRepository;
  
     @Autowired
     PasswordEncoder encoder;
@@ -116,14 +111,20 @@ public class AuthRestAPIs {
             roles.add(adminRole);
             
             break;
-          case "pegawai":
-                Role pegawaiRole = roleRepository.findByName(RoleName.ROLE_PEGAWAI)
+          case "usera":
+                Role useraRole = roleRepository.findByName(RoleName.ROLE_USERA)
                   .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-                roles.add(pegawaiRole);
+                roles.add(useraRole);
                 
             break;
+            case "userb":
+            Role userbRole = roleRepository.findByName(RoleName.ROLE_USERB)
+              .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+            roles.add(userbRole);
+            
+        break;
           default:
-              Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+              Role userRole = roleRepository.findByName(RoleName.ROLE_PEGAWAI)
                   .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
               roles.add(userRole);              
           }
@@ -146,78 +147,78 @@ public  java.util.List<User> get_All() {  //bio guru diambil dari tabel nama cla
 
 
 
-        // 1.  memanggil semua product
+//         // 1.  memanggil semua product
   
-@GetMapping("/tampilallproduct")//memanggil method tampil data
-@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+// @GetMapping("/tampilallproduct")//memanggil method tampil data
+// @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 
-public @ResponseBody List<Products> getAllProducts() {  //products diambil dari tabel nama class di model
-    return productRepository.findAll();
- }
+// public @ResponseBody List<Products> getAllProducts() {  //products diambil dari tabel nama class di model
+//     return productRepository.findAll();
+//  }
 
 
-//2.tampil data by id ke tabel database
+// //2.tampil data by id ke tabel database
 
-@GetMapping("/productById/{id}")//tipe bio mahasiswaa
-@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-public Optional<Products> idProducts( String id){
-    return productRepository.findById(id);
-}
-
-// //.3 menghapus isi data tabel byId
-
-// @DeleteMapping(path="/delete/{nim}")//tidak menampilkan apapun
-// void deleteBioGuru(@PathVariable String nim){
-//     myResource.deleteById(nim);
+// @GetMapping("/productById/{id}")//tipe bio mahasiswaa
+// @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+// public Optional<Products> idProducts( String id){
+//     return productRepository.findById(id);
 // }
 
-// //4. merubah data pake PUT 
+// // //.3 menghapus isi data tabel byId
 
-// @PutMapping(path="/update/{nim}")//tipe biomahasisa
-// public BioGuru replaceBioGuru(@RequestBody BioGuru newbioGuru, @PathVariable String nim){
-//     return myResource.findById(nim)
-//     .map(bioGuru->{
-//         bioGuru.setNama(newbioGuru.getNama());
-//         bioGuru.setNim(newbioGuru.getNim());
-//         return myResource.save(bioGuru);
-//     }).orElseGet(()->{
-//         newbioGuru.setNim(nim);
-//         return myResource.save(newbioGuru);
-//     });
+// // @DeleteMapping(path="/delete/{nim}")//tidak menampilkan apapun
+// // void deleteBioGuru(@PathVariable String nim){
+// //     myResource.deleteById(nim);
+// // }
+
+// // //4. merubah data pake PUT 
+
+// // @PutMapping(path="/update/{nim}")//tipe biomahasisa
+// // public BioGuru replaceBioGuru(@RequestBody BioGuru newbioGuru, @PathVariable String nim){
+// //     return myResource.findById(nim)
+// //     .map(bioGuru->{
+// //         bioGuru.setNama(newbioGuru.getNama());
+// //         bioGuru.setNim(newbioGuru.getNim());
+// //         return myResource.save(bioGuru);
+// //     }).orElseGet(()->{
+// //         newbioGuru.setNim(nim);
+// //         return myResource.save(newbioGuru);
+// //     });
     
+// // }
+
+
+// //5. post data product
+
+// @PostMapping("/tambahproduct")
+// //@PreAuthorize("hasRole('ADMIN')")
+// public Products addProducts(@RequestBody Products products){
+//     return productRepository.save(products);
 // }
 
 
-//5. post data product
 
-@PostMapping("/tambahproduct")
-//@PreAuthorize("hasRole('ADMIN')")
-public Products addProducts(@RequestBody Products products){
-    return productRepository.save(products);
-}
+// /////////////////////////////end product///////////////////
 
 
+// ///////////////////////////stock barang//////////////////////
 
-/////////////////////////////end product///////////////////
+// @GetMapping ("/tampilallstock") //memanggil method tampil barang
+// //@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 
-
-///////////////////////////stock barang//////////////////////
-
-@GetMapping ("/tampilallstock") //memanggil method tampil barang
-//@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-
-public @ResponseBody List<Stoks> getAllStoks() {  //stockproduck diambil dari tabel nama class di model
-    return stokRepository.findAll();
-}
+// public @ResponseBody List<Stoks> getAllStoks() {  //stockproduck diambil dari tabel nama class di model
+//     return stokRepository.findAll();
+// }
 
 
- // post data stock
+//  // post data stock
 
-@PostMapping("/jembut")
-//@PreAuthorize("hasRole('ADMIN')")
-public Stoks addStoks(@RequestBody Stoks stok){
-    return stokRepository.save(stok);
-}
+// @PostMapping("/jembut")
+// //@PreAuthorize("hasRole('ADMIN')")
+// public Stoks addStoks(@RequestBody Stoks stok){
+//     return stokRepository.save(stok);
+// }
 
 
 }
