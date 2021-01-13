@@ -40,7 +40,7 @@ public class Perusahaans  {
     // many to one ke cities
 
     @ManyToOne(optional=false)
-    @JoinColumn(name = "id_kota", referencedColumnName="id", insertable = false, updatable = false)
+    @JoinColumn(name = "id_city", referencedColumnName="id", insertable = false, updatable = false)
     private Cities cities; // object kategorie, mengambil object lain
 
 public Cities getCities() {
@@ -90,6 +90,69 @@ public Integer getIdKategori() {
   public void setIdKategori(Integer id_kategori) {
     this.id_kategori = id_kategori;
   }
+
+
+
+    // many to one ke Bidang Perusahaan
+
+
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "id_bidang", referencedColumnName="id", insertable = false, updatable = false)
+    private BidangPerusahaan bidangPerusahaan; // object kategorie, mengambil object lain
+
+public BidangPerusahaan getBidangPerusahaan() {
+    return bidangPerusahaan;
+  }
+public void setBidangPerusahaan(BidangPerusahaan bidangPerusahaan) {
+    this.bidangPerusahaan = bidangPerusahaan;
+}
+
+    //setter
+//id satuan
+@NotBlank
+private Integer id_bidang;
+
+public Integer getIdBidang() {
+    return id_bidang;
+  }
+  
+  public void setIdBidang(Integer id_bidang) {
+    this.id_bidang = id_bidang;
+  }
+
+
+
+
+
+
+
+    // many to one ke Users
+    
+
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "id_user", referencedColumnName="id", insertable = false, updatable = false)
+    private User user; // object kategorie, mengambil object lain
+
+public User getUser() {
+    return user;
+  }
+public void setUser(User user) {
+    this.user = user;
+}
+
+    //setter
+//id satuan
+@NotBlank
+private Integer id_user;
+
+public Integer getIdUser() {
+    return id_user;
+  }
+  
+  public void setIdUser(Integer id_user) {
+    this.id_user = id_user;
+  }
+
 
 
 
