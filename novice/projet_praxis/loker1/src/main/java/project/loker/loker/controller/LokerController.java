@@ -116,11 +116,19 @@ public class LokerController {
 //  }
 
 
-@GetMapping("/lokerbyId/{id}")//tipe bio mahasiswaa
-@PreAuthorize(" hasRole('ADMIN')")
-public Optional<Lokers> idLokers(Long id){
+@GetMapping("/loker/{id}")//tipe bio mahasiswaa
+@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+public Optional<Lokers> idLokers(@PathVariable Long id){
     return lokerRepository.findById(id);
 }
+
+
+// @GetMapping("/user/{id}")//tipe bio mahasiswaa
+// @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+// public Optional<User> idUser( @PathVariable Long id){
+//     return userRepository.findById(id);
+// }
+
 
 
 //.3 menghapus isi data tabel byId

@@ -61,7 +61,7 @@ public class Lokers {
     
 
     @ManyToOne(optional=false)
-    @JoinColumn(name = "id_perusahaan", referencedColumnName="id", insertable = false, updatable = false)
+    @JoinColumn(name = "id_perusahaans", referencedColumnName="id", insertable = false, updatable = false)
     private Perusahaans perusahaans; // object kategorie, mengambil object lain
 
 public Perusahaans getPerusahaans() {
@@ -74,14 +74,14 @@ public void setPerusahaans(Perusahaans perusahaans) {
     //setter
 //id satuan
 @NotBlank
-private Integer id_perusahaan;
+private Long id_perusahaans;
 
-public Integer getIdPerusahaan() {
-    return id_perusahaan;
+public Long getIdPerusahaans() {
+    return id_perusahaans;
   }
   
-  public void setIdPerusahaan(Integer id_perusahaan) {
-    this.id_perusahaan = id_perusahaan;
+  public void setIdPerusahaans(Long id_perusahaans) {
+    this.id_perusahaans = id_perusahaans;
   }
 
 

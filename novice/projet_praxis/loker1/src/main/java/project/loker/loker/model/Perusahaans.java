@@ -53,13 +53,13 @@ public void setCities(Cities cities) {
     //setter
 //id satuan
 @NotBlank
-private Integer id_city;
+private Long id_city;
 
-public Integer getIdCity() {
+public Long getIdCity() {
     return id_city;
   }
   
-  public void setIdCity(Integer id_city) {
+  public void setIdCity(Long id_city) {
     this.id_city = id_city;
   }
 
@@ -81,13 +81,13 @@ public void setKategories(Kategories kategories) {
     //setter
 //id kategorie
 @NotBlank
-private Integer id_kategori;
+private Long id_kategori;
 
-public Integer getIdKategori() {
+public Long getIdKategori() {
     return id_kategori;
   }
   
-  public void setIdKategori(Integer id_kategori) {
+  public void setIdKategori(Long id_kategori) {
     this.id_kategori = id_kategori;
   }
 
@@ -110,13 +110,13 @@ public void setBidangPerusahaan(BidangPerusahaan bidangPerusahaan) {
     //setter
 //id satuan
 @NotBlank
-private Integer id_bidang;
+private Long id_bidang;
 
-public Integer getIdBidang() {
+public Long getIdBidang() {
     return id_bidang;
   }
   
-  public void setIdBidang(Integer id_bidang) {
+  public void setIdBidang(Long id_bidang) {
     this.id_bidang = id_bidang;
   }
 
@@ -143,13 +143,13 @@ public void setUser(User user) {
     //setter
 //id satuan
 @NotBlank
-private Integer id_user;
+private Long id_user;
 
-public Integer getIdUser() {
+public Long getIdUser() {
     return id_user;
   }
   
-  public void setIdUser(Integer id_user) {
+  public void setIdUser(Long id_user) {
     this.id_user = id_user;
   }
 
@@ -157,7 +157,7 @@ public Integer getIdUser() {
 
 
 
-      // nama product
+      // nama Perusahaan
 
       @NotBlank
       @Size(min=3, max = 50)
