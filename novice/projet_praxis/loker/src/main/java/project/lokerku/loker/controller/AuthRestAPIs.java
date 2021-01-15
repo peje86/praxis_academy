@@ -15,20 +15,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
 
 
  
@@ -189,35 +178,26 @@ void deleteUser(@PathVariable Long id){
 //4. merubah data pake PUT 
 
 
-// @PutMapping("/{id}")
-// User updateUser(@RequestBody User newUser, @PathVariable Integer id){
-//     return userRepository.findById(id)
-//     .map(user ->{
-//         user.setName(newUser.getName());
-//         user.setEmail(newUser.getEmail());
-//         return userRepository.save(newUser);
-//     }).orElseGet(() -> {
-//         newUser.setId(id);
-//         return userRepository.save(newUser);
-//     });
-// }
+@PutMapping("/updateuser/{id}")
+@PreAuthorize("hasRole('ADMIN')")
+//public User replaceUser(@RequestBody User newUser, @PathVariable Long id) {
 
-@PutMapping("/updateuser/{id}")//tipe biomahasisa
-@PreAuthorize(" hasRole('Userb') or hasRole('ADMIN')")
-public User updateUser(@RequestBody User newUser, @PathVariable Long id){
-    return userRepository.findById(id)
-    .map(user->{
-        user.setName(newUser.getName());
-        user.setEmail(newUser.getEmail());
-        user.setUsername(newUser.getUsername());
-        user.setPassword(newUser.getPassword());
-        return userRepository.save(newUser);
-    }).orElseGet(()->{
+public User updateUser(@RequestBody User newUser, @PathVariable Long id) {
+    return userRepository.findById(id).map(users -> {
+        users.setName(newUser.getName());
+        users.setEmail(newUser.getEmail());
+        users.setUsername(newUser.getUsername());
+        users.setPassword(newUser.getPassword());
+        users.setAlamat(newUser.getAlamat());
+        users.setTelepon(newUser.getTelepon());
+        users.setIdPegawai(newUser.getIdPegawai());
+        return userRepository.save(users);
+    }) .orElseGet(() ->{
         newUser.setId(id);
         return userRepository.save(newUser);
     });
-    
 }
+
 
 
 // //5. post data product
