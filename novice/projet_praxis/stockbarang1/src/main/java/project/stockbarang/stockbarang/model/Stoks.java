@@ -53,44 +53,44 @@ public void setProducts(Products products) {
     //setter
 //id satuan
 //@NotBlank
-private Integer id_product;
+private Long id_product;
 
-public Integer getIdProduct() {
+public Long getIdProduct() {
     return id_product;
   }
   
-  public void setIdProduct(Integer id_product) {
+  public void setIdProduct(Long id_product) {
     this.id_product = id_product;
   }
 
 
 
 
-   // many to one ke user
+//    // many to one ke user
 
-   @ManyToOne(optional=false)
-   @JoinColumn(name = "id_user", referencedColumnName="id", insertable = false, updatable = false)
-   private User user; // object kategorie, mengambil object lain
+//    @ManyToOne(optional=false)
+//    @JoinColumn(name = "id_user", referencedColumnName="id", insertable = false, updatable = false)
+//    private User user; // object kategorie, mengambil object lain
 
-public User getUser() {
-   return user;
- }
-public void setUser(User user) {
-   this.user = user;
-}
+// public User getUser() {
+//    return user;
+//  }
+// public void setUser(User user) {
+//    this.user = user;
+// }
 
-   //setter
-//id satuan
-//@NotBlank
-private Integer id_user;
+//    //setter
+// //id satuan
+// //@NotBlank
+// private Integer id_user;
 
-public Integer getIdUser() {
-   return id_user;
- }
+// public Integer getIdUser() {
+//    return id_user;
+//  }
  
- public void setIdUser(Integer id_user) {
-   this.id_user = id_user;
- }
+//  public void setIdUser(Integer id_user) {
+//    this.id_user = id_user;
+//  }
 
 
 

@@ -37,59 +37,59 @@ public class Products  {
         this.id = id;
     }
 
-    // many to one ke satuan
+//     // many to one ke satuan
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "id_satuan", referencedColumnName="id", insertable = false, updatable = false)
-    private Satuans satuan; // object kategorie, mengambil object lain
+//     @ManyToOne(optional=false)
+//     @JoinColumn(name = "id_satuan", referencedColumnName="id", insertable = false, updatable = false)
+//     private Satuans satuan; // object kategorie, mengambil object lain
 
-public Satuans getSatuan() {
-    return satuan;
-  }
-public void setSatuan(Satuans satuan) {
-    this.satuan = satuan;
-}
+// public Satuans getSatuan() {
+//     return satuan;
+//   }
+// public void setSatuan(Satuans satuan) {
+//     this.satuan = satuan;
+// }
 
-    //setter
-//id satuan
-@NotBlank
-private Integer id_satuan;
+//     //setter
+// //id satuan
+// @NotBlank
+// private Integer id_satuan;
 
-public Integer getIdSatuan() {
-    return id_satuan;
-  }
+// public Integer getIdSatuan() {
+//     return id_satuan;
+//   }
   
-  public void setIdSatuan(Integer id_satuan) {
-    this.id_satuan = id_satuan;
-  }
+//   public void setIdSatuan(Integer id_satuan) {
+//     this.id_satuan = id_satuan;
+//   }
 
 
 
-    // many to one ke kategory
+//     // many to one ke kategory
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "id_kategori", referencedColumnName="id", insertable = false, updatable = false)
-    private Kategories kategories; // object kategorie, mengambil object lain
+//     @ManyToOne(optional=false)
+//     @JoinColumn(name = "id_kategori", referencedColumnName="id", insertable = false, updatable = false)
+//     private Kategories kategories; // object kategorie, mengambil object lain
 
-public Kategories getKategories() {
-    return kategories;
-  }
-public void setKategories(Kategories kategories) {
-    this.kategories = kategories;
-}
+// public Kategories getKategories() {
+//     return kategories;
+//   }
+// public void setKategories(Kategories kategories) {
+//     this.kategories = kategories;
+// }
 
-    //setter
-//id kategorie
-@NotBlank
-private Integer id_kategori;
+//     //setter
+// //id kategorie
+// @NotBlank
+// private Integer id_kategori;
 
-public Integer getIdKategori() {
-    return id_kategori;
-  }
+// public Integer getIdKategori() {
+//     return id_kategori;
+//   }
   
-  public void setIdKategori(Integer id_kategori) {
-    this.id_kategori = id_kategori;
-  }
+//   public void setIdKategori(Integer id_kategori) {
+//     this.id_kategori = id_kategori;
+//   }
 
 
 

@@ -179,7 +179,7 @@ void deleteUser(@PathVariable Long id){
 
 
 @PutMapping("/updateuser/{id}")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasRole('USERA') or hasRole('USERB') or hasRole('ADMIN')")
 //public User replaceUser(@RequestBody User newUser, @PathVariable Long id) {
 
 public User updateUser(@RequestBody User newUser, @PathVariable Long id) {

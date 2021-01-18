@@ -14,6 +14,3 @@ public interface StokRepository extends JpaRepository<Stoks ,Long> {  //mengambi
 List<Stoks>findAll();
 
 }
-
-
-
