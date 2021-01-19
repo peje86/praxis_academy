@@ -14,30 +14,35 @@ public class StokService {
     @Autowired
     private StokRepository stokRepository;
 
-    // public List<Products> getAllProducts() {
-    //     List<Products> products = new ArrayList<>();
-    //     productRepository.findAll().forEach(products::add);
-    //     return products;
-    // }
+    public List<Stoks> getAllStoks() {
+        List<Stoks> stoks = new ArrayList<>();
+        stokRepository.findAll().forEach(stoks::add);
+        return stoks;
+    }
 
     public Stoks getStoks(Long id) {
         Stoks stoks = stokRepository.findById(id).orElse(null);
         return stoks;
     }
 
-    // public Products addProducts(Products products) {
-    //     productRepository.save(products);
-    //     return products;
+    // public Stoks getIdProduct(Long id_product) {
+    //     Stoks stoks = stokRepository.findById(id_product).orElse(null);
+    //     return stoks;
     // }
 
-    // public Products updateProducts(Long id, Products products) {
-    //     productRepository.save(products);
-    //     return products;
-    // }
+    public Stoks addStoks(Stoks stoks) {
+        stokRepository.save(stoks);
+        return stoks;
+    }
 
-    // public Products deleteProducts(Long id) {
-    //     Products products = productRepository.findById(id).orElse(null);
-    //     productRepository.deleteById(id);
-    //     return products;
-    // }
+    public Stoks updateStoks(Long id, Stoks stoks) {
+        stokRepository.save(stoks);
+        return stoks;
+    }
+
+    public Stoks deleteStoks(Long id) {
+        Stoks stoks = stokRepository.findById(id).orElse(null);
+        stokRepository.deleteById(id);
+        return stoks;
+    }
 }

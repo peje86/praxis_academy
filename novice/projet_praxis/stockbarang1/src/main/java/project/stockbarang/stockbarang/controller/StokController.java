@@ -27,13 +27,13 @@ import project.stockbarang.stockbarang.repository.ProductRepository;
 import project.stockbarang.stockbarang.repository.StokRepository;
 import project.stockbarang.stockbarang.security.jwt.JwtProvider;
 
-import project.stockbarang.stockbarang.security.service.StokService;
+import project.stockbarang.stockbarang.security.services.StokService;
 
 
  
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api/stoks")
 public class StokController {
  
     @Autowired
@@ -51,6 +51,10 @@ public class StokController {
 
     @Autowired
     StokRepository stokRepository;
+    
+
+    @Autowired
+    StokService stokService;
     
     
 
@@ -113,29 +117,63 @@ public Stoks addStoks(@RequestBody Stoks stoks){
     return stokRepository.save(stoks);
 }
 
+// kurangi stok by id stok
 
-   
-   @PutMapping("/stok/{id}/w/{quantity}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public Stoks withdrawStoks(@PathVariable Long id, String quantity) {
-        Stoks stoks = stokService.getJumlah(id);
-        String currQuantity = stoks.getJumlah();
-        int newQuantity = Integer.parseInt(currQuantity) - Integer.parseInt(quantity);
-        if(newQuantity < 1) {
-            System.out.println("new quantity negatif" + newQuantity + "jadi gak bisa withdraw");
-            return stoks;
-        }
-        stoks.setJumlah(String.valueOf(newQuantity));
-        return stokService.updateStoks(id, stoks);
+@PutMapping("/stok/{id}/w/{quantity}")
+@PreAuthorize("hasRole('ADMIN')")
+public Stoks withdrawStoks(@PathVariable Long id, @PathVariable String quantity) {
+    Stoks stoks = stokService.getStoks(id);
+    String currQuantity = stoks.getJumlah();
+    int newQuantity = Integer.parseInt(currQuantity) - Integer.parseInt(quantity);
+    stoks.setJumlah(String.valueOf(newQuantity));
+    if(newQuantity < 1) {
+        System.out.println("new quantity negatif" + newQuantity + "jadi gak bisa withdraw");
+        return stoks;
     }
+    stoks.setJumlah(String.valueOf(newQuantity)); //setJumlah diambil dari nama Jumlah di tabel stok
+    return stokService.updateStoks(id, stoks);
+}
+// kurangi stok by id product
 
-//     @PutMapping("/barang/{id}/d/{quantity}")
-//     @PreAuthorize("hasRole('ADMIN')")
-//     public Barang depositBarang(@PathVariable Long id, @PathVariable String quantity) {
-//         Barang barang = barangService.getBarang(id);
-//         String currQuantity = barang.getStock();
-//         int newQuantity = Integer.parseInt(currQuantity) + Integer.parseInt(quantity);
-//         barang.setStock(String.valueOf(newQuantity));
-//         return barangService.updateBarang(id, barang);
-//     }
+@PutMapping("/kurangstokbyidproduct/{id_product}/w/{quantity}")
+@PreAuthorize("hasRole('ADMIN')")
+public Stoks withdrawStoksbyIdProduct(@PathVariable Long id_product, @PathVariable String quantity) {
+    Stoks stoks = stokService.getStoks(id_product);
+    String currQuantity = stoks.getJumlah();
+    int newQuantity = Integer.parseInt(currQuantity) - Integer.parseInt(quantity);
+    stoks.setJumlah(String.valueOf(newQuantity));
+    if(newQuantity < 1) {
+        System.out.println("new quantity negatif" + newQuantity + "jadi gak bisa withdraw");
+        return stoks;
+    }
+    stoks.setJumlah(String.valueOf(newQuantity)); //setJumlah diambil dari nama Jumlah di tabel stok
+    return stokService.updateStoks(id_product, stoks);
+}
+
+//tambah berdasarkan id stok
+
+@PutMapping("/stok/{id}/d/{quantity}")
+@PreAuthorize("hasRole('ADMIN')")
+public Stoks depositStoks(@PathVariable Long id, @PathVariable String quantity) {
+    Stoks stoks = stokService.getStoks(id);
+    String currQuantity = stoks.getJumlah();
+    int newQuantity = Integer.parseInt(currQuantity) + Integer.parseInt(quantity);
+    stoks.setJumlah(String.valueOf(newQuantity));
+    return stokService.updateStoks(id, stoks);
+}
+
+//tambah berdasarkan id product
+
+@PutMapping("/tambahbyidproduct/{id_product}/d/{quantity}")
+@PreAuthorize("hasRole('ADMIN')")
+public Stoks depositStoksbyIdProduct(@PathVariable Long id_product, @PathVariable String quantity) {
+    Stoks stoks = stokService.getStoks(id_product);
+    String currQuantity = stoks.getJumlah();
+    int newQuantity = Integer.parseInt(currQuantity) + Integer.parseInt(quantity);
+    stoks.setJumlah(String.valueOf(newQuantity));
+    return stokService.updateStoks(id_product, stoks);
+}
+
+
+
 }

@@ -12,5 +12,6 @@ import project.stockbarang.stockbarang.model.Stoks;
 @Repository
 public interface StokRepository extends JpaRepository<Stoks ,Long> {  //mengambil data dari depedency
 List<Stoks>findAll();
+// Optional<Stoks>findById(Long id_product);
 
 }
