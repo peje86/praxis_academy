@@ -1,0 +1,76 @@
+<!-- operasi perhitungan -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>vue beginner</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 5%;
+            font-family: 'Quicksand', sans-serif;
+        }
+    </style>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <!-- <script src='main.js'></script> -->
+</head>
+<body>
+   
+        <!-- id=app adalah route komponen -->
+    <div id="app"> 
+        <header>
+            <img src="image/logo.png" width="80">
+            <!-- {{}} adalah inner pollation atau templete sintax -->
+            <!-- v-once  isi atribut tidak dapat dirubah -->
+
+
+            <!-- expression -->
+            <h1>{{getname()}} </h1> 
+
+
+
+            <p>The progessive javascript framework</p>
+        </header>
+    
+        <footer id="footer">
+            <p>copyright 2019</p>
+        </footer>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>   
+<script>
+
+    // const member =  { // contoh penulisan data di pisah
+    //         //string,number,boolean,array,object
+    //         name: 'doremi fa solasido',
+    //         pesan: "xxxxxxxxxxxxx!",
+    //         isactive: true
+    //     }
+    
+
+    const vm = new Vue({  //instanse
+        //app kita jadikan route elemen
+        el: '#app',  //key (property) tanda # kalau id, tanda . kalau class
+        data: { // contoh penulisan data di object
+            //string,number,boolean,array,object
+            name: 'doremi fa solasido',
+            pesan: "hello world!"
+        },
+        methods: {
+            getname: function(){
+                return 'hello,' +this.name
+            },
+            ubahNama: function(namaBaru){
+                this.name = namaBaru
+                return this.getname
+            }
+        }
+    }         
+
+    )
+</script> 
+</body>
+</html>
